@@ -12,11 +12,11 @@ function Body() {
     //here to add feedback to the data base but not now
     setIsPopupVisible(true);
 
-    setFeedback("");
-    setName("");
   };
 
   const handleClosePopup = () => {
+    setFeedback("");
+    setName("");
     setIsPopupVisible(false);
   };
 
@@ -32,7 +32,7 @@ function Body() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               type="text"
-              placeholder="Name"
+              placeholder="Name (optional)"
               className="feedback-input-name"
             />
             <br />
@@ -52,7 +52,7 @@ function Body() {
       {isPopupVisible && (
         <div className="popup">
           <img src={Checkmark} alt="Checkmark" />
-          <h3>Thanks for leaving a recommendation!</h3>
+          <h3>Thanks {name} for leaving a Feedback!</h3>
           <button onClick={handleClosePopup}>Ok</button>
         </div>
       )}

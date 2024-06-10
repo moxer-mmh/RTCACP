@@ -80,8 +80,8 @@
   box-shadow: 0 0 10px #333;
   z-index: 1000;
   text-align: center;
-  height: 150px;
-  width: 400px;
+  height: fit-content;
+  width: fit-content;
 }
 
 .popup h3 {
