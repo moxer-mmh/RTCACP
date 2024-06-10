@@ -1,22 +1,14 @@
-import './App.css';
+import Footer from "./Pages/LandingPage/Components/Footer/Footer";
+import Body from "./Pages/LandingPage/Components/Body/Body";
+import Header from "./Pages/LandingPage/Components/Header/Header";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src="Octocat.png" className="App-logo" alt="logo" />
-        <p>
-          <a
-            className="App-link"
-            href="https://github.com/moxer-mmh"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            My Github
-          </a>
-        </p>
-      </header>
-    </div>
+    <>
+      <Header />
+      <Body />
+      <Footer />
+    </>
   );
 }
 
