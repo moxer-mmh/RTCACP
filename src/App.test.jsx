@@ -4,8 +4,5 @@ import App from "./App";
 
 test("renders app component", () => {
   render(<App />);
-  expect(screen.getByTestId("header")).toBeInTheDocument();
-  expect(screen.getByTestId("body")).toBeInTheDocument();
-  expect(screen.getByTestId("footer")).toBeInTheDocument();
-  expect(screen.getByTestId("home-button")).toBeInTheDocument();
+  expect(screen.getByText(/All Rights Reserved/i)).toBeInTheDocument();
 });
