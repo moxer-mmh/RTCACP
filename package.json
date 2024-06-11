@@ -2,10 +2,12 @@
   "name": "codespaces-react",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://moxer-mmh.github.io/Real-Time-Communication-and-Collaboration-Platform",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",
+    "gh-pages": "^6.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "TagCloud": "^2.2.0",
@@ -17,6 +19,8 @@
     "postcss": "^8.4.31"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "set BROWSER=none && set WDS_SOCKET_PORT=0 && vite --port 3000",
     "build": "vite build",
     "preview": "vite preview",

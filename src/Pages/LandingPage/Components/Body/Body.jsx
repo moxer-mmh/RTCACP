@@ -29,7 +29,7 @@ function Body() {
         "Workflow",
       ];
       const options = {
-        radius: 300,
+        radius: 350,
         maxSpeed: "normal",
         initSpeed: "normal",
         keep: true,
@@ -53,8 +53,8 @@ function Body() {
   return (
     <div className="Body">
       <div>Blog</div>
-      <div className="News">
-        <div className="news-container">
+      <div className="features">
+        <div className="features-container">
           <span className="tagcloud"></span>
         </div>
       </div>

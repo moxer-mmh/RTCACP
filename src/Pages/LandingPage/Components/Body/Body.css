@@ -6,12 +6,12 @@
   min-height: 100vh;
 }
 
-.News {
+.features {
   width: 70%;
   height: 30%;
 }
 
-.news-container {
+.features-container {
   position: relative;
   top: 0;
   width: 100%;
