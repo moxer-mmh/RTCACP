@@ -35,7 +35,6 @@ jobs:
       with:
         node-version: '16.x'
         
-    - run: npm ci
     - run: npm run deploy
     
     - name: Deploy to GitHub Pages
