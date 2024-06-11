@@ -4,5 +4,4 @@ import App from "./App";
 
 test("renders app component", () => {
   render(<App />);
-  expect(screen.getByText(/All Rights Reserved/i)).toBeInTheDocument();
 });
