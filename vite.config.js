@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  base: "/Real-Time-Communication-and-Collaboration-Platform/",
+  base: "//",
   build: {
     outDir: 'dist'
   },
