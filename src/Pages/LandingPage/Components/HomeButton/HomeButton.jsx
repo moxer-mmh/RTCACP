@@ -1,4 +1,3 @@
-import React from 'react';
 import Arrow from '../../Assets/arrow-up-solid.svg';
 import './HomeButton.css'; // Import the CSS file
 
