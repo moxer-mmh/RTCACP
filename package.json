@@ -20,6 +20,8 @@
     "postcss": "^8.4.31"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "start": "set BROWSER=none && set WDS_SOCKET_PORT=0 && vite --port 3000",
     "build": "vite build",
     "dev": "vite",
