@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "homepage": "https://moxer-mmh.github.io/Real-Time-Communication-and-Collaboration-Platform",
+  "homepage": "https://moxer-mmh.github.io/rtcp",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -20,8 +20,6 @@
     "postcss": "^8.4.31"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
     "start": "set BROWSER=none && set WDS_SOCKET_PORT=0 && vite --port 3000",
     "build": "vite build",
     "dev": "vite",
