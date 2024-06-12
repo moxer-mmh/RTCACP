@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./Body.css";
 import Checkmark from "../../Assets/checkmark--outline.svg";
 import TagCloud from "TagCloud";
@@ -38,17 +38,25 @@ function Body() {
     };
   }, []);
 
-  const handleSubmit = (e) => {
+  function addFeedback(e) {
+    setFeedback(e.target.value);
+  }
+
+  function addName(e) {
+    setName(e.target.value);
+  }
+
+  function handleSubmit(e) {
     e.preventDefault();
     //here to add feedback to the data base but not now
     setIsPopupVisible(true);
-  };
+  }
 
-  const handleClosePopup = () => {
+  function handleClosePopup() {
     setFeedback("");
     setName("");
     setIsPopupVisible(false);
-  };
+  }
 
   return (
     <div className="Body">
@@ -59,12 +67,12 @@ function Body() {
         </div>
       </div>
       <div className="feedback">
-        <form onSubmit={(e) => handleSubmit(e)}>
+        <form id="form-feedback" onSubmit={(e) => handleSubmit(e)}>
           <fieldset className="feedback-container">
             <h2 className="introduction">Leave a Feedback</h2>
             <input
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => addName(e)}
               type="text"
               placeholder="Name (optional)"
               className="feedback-input-name"
@@ -72,7 +80,7 @@ function Body() {
             <br />
             <textarea
               value={feedback}
-              onChange={(e) => setFeedback(e.target.value)}
+              onChange={(e) => addFeedback(e)}
               placeholder="Write your feedback here..."
               className="feedback-textarea"
             />
