@@ -6,10 +6,10 @@ import HomeButton from "./Pages/LandingPage/Components/HomeButton/HomeButton";
 function App() {
   return (
     <>
-      <Header />
-      <Body />
-      <Footer />
-      <HomeButton />
+      <Header data-testid="header"  />
+      <Body data-testid="body" />
+      <Footer data-testid="footer" />
+      <HomeButton data-testid="home-button" />
     </>
   );
 }
