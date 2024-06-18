@@ -1,9 +1,14 @@
-// eslint-disable-next-line no-unused-vars
-import React from "react";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
+import { test, expect } from "vitest";
 import App from "./App";
 
-// eslint-disable-next-line no-undef
 test("renders app component", () => {
-  render(<App />);
+  render(
+    <MemoryRouter>
+      <App />
+    </MemoryRouter>
+  );
+  const linkElement = screen.getByText(/Bridging teams together/i);
+  expect(linkElement).toBeInTheDocument();
 });
