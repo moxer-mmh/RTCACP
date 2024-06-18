@@ -2,6 +2,7 @@ import Nav from "./Components/Nav";
 import Footer from "./Components/Footer/Footer";
 import Body from "./Components/Body/Body";
 import Auth from "./Components/Pages/Auth/Auth";
+import "./App.css";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
