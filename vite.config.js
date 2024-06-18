@@ -5,10 +5,11 @@ export default defineConfig({
   plugins: [react()],
   base: "/",
   build: {
-    outDir: 'dist'
+    outDir: "dist",
   },
   test: {
     globals: true,
-    environment: 'jsdom',
+    environment: "jsdom",
+    setupFiles: "./src/setupTests.jsx",
   },
-})
+});

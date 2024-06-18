@@ -1,5 +1,6 @@
-import { render, screen, test, expect } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
+import { test, expect } from "vitest";
 import App from "./App";
 
 test("renders app component", () => {
@@ -8,7 +9,6 @@ test("renders app component", () => {
       <App />
     </MemoryRouter>
   );
-  // Assuming there is some text "learn react" to test for
-  const linkElement = screen.getByText(/"Bridging teams together"/i);
+  const linkElement = screen.getByText(/Bridging teams together/i);
   expect(linkElement).toBeInTheDocument();
 });
