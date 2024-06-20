@@ -29,7 +29,7 @@ function Footer() {
         </section>
       </div>
       <p className="Rights">
-        &copy; 2024 <span>MMH OMZ</span>. All Rights Reserved.
+        &copy; 2024 <span>MMH GRM OMZ</span>. All Rights Reserved.
       </p>
     </footer>
   );

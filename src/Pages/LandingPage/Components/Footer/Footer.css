@@ -1,0 +1,41 @@
+.footer-Div {
+  height: 90%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.footer-Div section {
+  height: 100%;
+  width: 30%;
+  text-align: center;
+}
+
+.footer-Div section h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.footer-Div section ul {
+  color: #5d5656;
+  list-style: none;
+  padding: 0;
+  font-size: 0.875rem;
+}
+
+.footer-Div section ul li {
+  margin-bottom: 0.5rem;
+}
+
+.Rights {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #918889;
+  padding: 2rem;
+  font-size: 0.813rem;
+}
+
