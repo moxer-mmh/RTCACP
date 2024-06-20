@@ -1,13 +1,24 @@
-import Footer from "./Pages/LandingPage/Components/Footer/Footer";
-import Body from "./Pages/LandingPage/Components/Body/Body";
-import Header from "./Pages/LandingPage/Components/Header/Header";
+import Nav from "./Components/Nav";
+import Footer from "./Components/Footer/Footer";
+import Body from "./Components/Body/Body";
+import Auth from "./Components/Pages/Auth/Auth";
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <Header />
-      <Body />
-      <Footer />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Nav /> <Body /> <Footer />
+            </>
+          }
+        />
+        <Route path="/auth" element={<Auth />} />
+      </Routes>
     </>
   );
 }

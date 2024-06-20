@@ -1,0 +1,142 @@
+.Body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+  
+  .features {
+    width: 70%;
+    height: 30%;
+  }
+  
+  .features-container {
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .tagcloud {
+    display: inline-block;
+    top: 0;
+    left: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.0625em;
+    font-size: 1.3em;
+  }
+  .tagcloud--item {
+    color: #333;
+    text-transform: uppercase;
+  }
+  
+  .tagcloud--item:hover {
+    color: #5d5656;
+  }
+  
+  .feedback {
+    width: 70%;
+    height: 30%;
+  }
+  
+  .feedback-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: none;
+  }
+  
+  .feedback-container h2 {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #333;
+  }
+  
+  .feedback-input-name,
+  .feedback-textarea {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid #5d5656;
+    border-radius: 4px;
+    resize: none;
+    margin-bottom: 10px;
+  }
+  
+  .feedback-input-name {
+    height: 30px;
+  }
+  
+  .feedback-textarea {
+    resize: vertical;
+  }
+  
+  .feedback-button {
+    background-color: #fff;
+    border: 1px solid #333;
+    color: #333;
+    display: block;
+    border-radius: 6px;
+    text-align: center;
+    margin: 50px;
+    padding: 10px;
+    width: 2in;
+    font-size: 20px;
+  }
+  
+  .feedback-button:hover {
+    background-color: #333;
+    border: 1px solid #333;
+    color: #fff;
+    display: block;
+    border-radius: 6px;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px #333;
+    z-index: 1000;
+    text-align: center;
+    height: fit-content;
+    width: fit-content;
+  }
+  
+  .popup h3 {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .popup img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .popup button {
+    border: none;
+    background: #333;
+    color: white;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .popup button:hover {
+    background: #555;
+  }
+  
