@@ -1,6 +1,9 @@
 import "./Header.css";
 import logoReact from "../../Assets/logo192.png";
 import teamWork from "../../Assets/teamWork.png";
+import AuthPage from "../../../AuthPage";
+
+
 
 function Header() {
   return (
@@ -28,7 +31,10 @@ function Header() {
           </a>
         </nav>
         <div>
-          <button className="log">Se connecter</button>
+          <a href={AuthPage}>
+            <button className="log">Se connecter</button>
+          </a>
+          
         </div>
       </div>
 
