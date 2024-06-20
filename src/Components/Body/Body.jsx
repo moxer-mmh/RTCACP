@@ -61,7 +61,7 @@ function Body() {
 
   return (
     <>
-      <div className="Body">
+      <main className="Body">
         <div className="Header">
           <div>
             <img alt="Team Work" />
@@ -120,7 +120,7 @@ function Body() {
             <button onClick={handleClosePopup}>Ok</button>
           </div>
         )}
-      </div>
+      </main>
       <HomeButton />
     </>
   );
