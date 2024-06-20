@@ -3,6 +3,8 @@ import "./Body.css";
 import Checkmark from "../../assets/checkmark--outline.svg";
 import TagCloud from "TagCloud";
 import HomeButton from "../HomeButton/HomeButton";
+import teamWork from "../../assets/teamWork.png"
+import { Link } from "react-router-dom";
 
 function Body() {
   const [feedback, setFeedback] = useState("");
@@ -61,34 +63,32 @@ function Body() {
 
   return (
     <>
-      <div className="Body">
+      <main className="Body">
         <div className="Header">
-          <div>
-            <img alt="Team Work" />
+          <div className="teamWork">
+            <section className="laSection">
+              <div className="titleSec">
+                Bridging teams together. one message at a time
+              </div>
+              <p className="slang">
+                Stay connected and collaborate in real-time across web, mobile,
+                and desktop with our all-in-one platform.
+              </p>
+              <Link className="getStarted" to={"/auth"}>Get Started</Link>
+            </section>
+
+            <div>
+              <img src={teamWork} alt="Team Work" />
+            </div>
           </div>
-          <section>
-            <h1>
-              Bridging teams together,<br></br> one message at a time
-            </h1>
-            <p>
-              Stay connected and collaborate in real-time across web, mobile,
-              and desktop with our all-in-one platform.
-            </p>
-            <button>
-              <a href="/auth" className="button">
-                {" "}
-                Get Started
-              </a>
-            </button>
-          </section>
         </div>
-        <div className="Blog">Blog</div>
-        <div className="features">
+        <div className="Blog" id="Blog">Blog</div>
+        <div className="features" id="features">
           <div className="features-container">
             <span className="tagcloud"></span>
           </div>
         </div>
-        <div className="feedback">
+        <div className="feedback" id="feedback">
           <form id="form-feedback" onSubmit={(e) => handleSubmit(e)}>
             <fieldset className="feedback-container">
               <h2 className="introduction">Leave a Feedback</h2>
@@ -120,7 +120,7 @@ function Body() {
             <button onClick={handleClosePopup}>Ok</button>
           </div>
         )}
-      </div>
+      </main>
       <HomeButton />
     </>
   );
