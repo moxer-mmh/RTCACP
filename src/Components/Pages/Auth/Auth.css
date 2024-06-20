@@ -1,0 +1,170 @@
+.auth {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: grey;
+}
+
+.auth-container {
+  width: 70%;
+  height: 60%;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  overflow: hidden;
+  position: relative;
+}
+
+.container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  transition: transform 0.6s ease-in-out;
+}
+
+.signin-container,
+.signup-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.signin-container {
+  transform: translateX(0);
+}
+
+.signup-container {
+  transform: translateX(100%);
+}
+
+.auth-container.signing-up .signin-container {
+  transform: translateX(-100%);
+}
+
+.auth-container.signing-up .signup-container {
+  transform: translateX(0);
+}
+
+.signin,
+.signup {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.auth-container form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.auth-container form input {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.auth-container form button {
+  background-color: #fff;
+  border: 1px solid #333;
+  color: #333;
+  display: block;
+  border-radius: 6px;
+  text-align: center;
+  margin: 50px;
+  padding: 10px;
+}
+
+.auth-container form button:hover {
+  background-color: #333;
+  border: 1px solid #333;
+  color: #fff;
+  display: block;
+  border-radius: 6px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.signin-msg,
+.signup-msg {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background-color: #444;
+}
+
+.signin-msg p,
+.signup-msg p {
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0px 0px 20px 0px;
+}
+
+.signin-msg button,
+.signup-msg button {
+  background-color: #fff;
+  border: 1px solid #333;
+  color: #333;
+  display: block;
+  border-radius: 6px;
+  text-align: center;
+  margin: 10px 100px 10px 100px;
+  padding: 6px 0px 6px 0px;
+}
+
+.signin-msg button:hover,
+.signup-msg button:hover {
+  background-color: #333;
+  border: 1px solid #333;
+  color: #fff;
+  display: block;
+  border-radius: 6px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.iconbutton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: #333;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.iconbutton img {
+  width: 30px;
+  height: 30px;
+}

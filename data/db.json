@@ -17,6 +17,12 @@
       "name": "moncef",
       "email": "moncef@moncef.moncef",
       "password": "moncef"
+    },
+    {
+      "id": "e1a1",
+      "name": "check",
+      "email": "check@check.check",
+      "password": "check"
     }
   ]
 }

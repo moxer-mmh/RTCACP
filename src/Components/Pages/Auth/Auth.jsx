@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import "./Auth.css";
 import api from "../../../api/accounts";
+import Arrow from "../../../assets/arrow-left-solid.svg";
 
 function Auth() {
-  const [isSignIn, setIsSignIn] = useState(true);
   const [isSignUp, setIsSignUp] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -39,7 +39,6 @@ function Auth() {
       alert("Account found");
     } else {
       alert("Account not found");
-      setIsSignIn(false);
       setIsSignUp(true);
     }
 
@@ -77,78 +76,81 @@ function Auth() {
     setEmail("");
     setPassword("");
     setIsSignUp(false);
-    setIsSignIn(true);
   }
 
   function handleSignIn() {
-    setIsSignIn(true);
     setIsSignUp(false);
   }
 
   function handleSignUp() {
-    setIsSignIn(false);
     setIsSignUp(true);
   }
 
   return (
     <main className="auth">
-      <div className="auth-container">
-        {isSignIn && (
-          <>
-            <div className="signin-container">
-              <h1>Sign In</h1>
-              <form onSubmit={(e) => handleSubmitSignIn(e)}>
-                <input
-                  type="email"
-                  placeholder="Email"
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <input
-                  type="password"
-                  placeholder="Password"
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                <button>Sign In</button>
-              </form>
-            </div>
-            <div className="signup-msg">
-              <p>Dont have an account?</p>
-              <button onClick={() => handleSignUp()}>Sign Up</button>
-            </div>
-          </>
-        )}
-        {isSignUp && (
-          <>
-            <div className="signup-container">
-              <h1>Sign Up</h1>
-              <form onSubmit={(e) => handleSubmitSignUp(e)}>
-                <input
-                  type="text"
-                  placeholder="Name"
-                  onChange={(e) => setName(e.target.value)}
-                />
-                <input
-                  type="email"
-                  placeholder="Email"
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <input
-                  type="password"
-                  placeholder="Password"
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                <button>Sign Up</button>
-              </form>
-            </div>
-            <div className="signin-msg">
-              <p>Already have an account?</p>
-              <button onClick={() => handleSignIn()}>Sign In</button>
-            </div>
-          </>
-        )}
+      <div className={`auth-container ${isSignUp ? "signing-up" : ""}`}>
+        <div className="container signin-container">
+          <div className="signin">
+            <h1>Sign In</h1>
+            <form onSubmit={handleSubmitSignIn}>
+              <input
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <button type="submit">Sign In</button>
+            </form>
+          </div>
+          <div className="signup-msg">
+            <p>Dont have an account?</p>
+            <button onClick={handleSignUp}>Sign Up</button>
+          </div>
+        </div>
+        <div className="container signup-container">
+          <div className="signin-msg">
+            <p>Already have an account?</p>
+            <button onClick={handleSignIn}>Sign In</button>
+          </div>
+          <div className="signup">
+            <h1>Sign Up</h1>
+            <form onSubmit={handleSubmitSignUp}>
+              <input
+                type="text"
+                placeholder="Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+              <input
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <button type="submit">Sign Up</button>
+            </form>
+          </div>
+        </div>
       </div>
-      <a href="/">return</a>
+      <div className="iconbutton">
+        <a href="/">
+          <img src={Arrow} alt="home" />
+        </a>
+      </div>
     </main>
   );
 }
+
 export default Auth;
