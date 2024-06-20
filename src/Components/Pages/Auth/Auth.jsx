@@ -56,16 +56,22 @@ function Auth() {
       password: password,
     };
 
-    api
-      .post("/accounts", data)
-      .then((response) => {
-        setAccounts([...accounts, response.data]);
-        alert("Account created successfully");
-      })
-      .catch((error) => {
-        console.error(error);
-        alert("Error creating account");
-      });
+    const account = accounts.find((account) => account.email === data.email);
+
+    if (account) {
+      alert("Account already exists");
+    } else {
+      api
+        .post("/accounts", data)
+        .then((response) => {
+          setAccounts([...accounts, response.data]);
+          alert("Account created successfully");
+        })
+        .catch((error) => {
+          console.error(error);
+          alert("Error creating account");
+        });
+    }
 
     setName("");
     setEmail("");
