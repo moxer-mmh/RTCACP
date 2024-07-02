@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Auth.css";
 import api from "../../../api/accounts";
 import Arrow from "../../../assets/arrow-left-solid.svg";
@@ -41,11 +42,22 @@ function Auth() {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [popupMessage, setPopupMessage] = useState("");
+  const [shouldNavigate, setShouldNavigate] = useState(false);
+  const navigate = useNavigate();
   const {
     data: accounts,
     fetchError,
     isLoading,
   } = useAxiosFetch(`${api.defaults.baseURL}/accounts`);
+
+  useEffect(() => {
+    if (shouldNavigate) {
+      const accountInfo = localStorage.getItem('accountInfo');
+      if (accountInfo) {
+        navigate('/home');
+      }
+    }
+  }, [shouldNavigate, navigate]);
 
   function handleSubmitSignIn(e) {
     e.preventDefault();
@@ -54,6 +66,8 @@ function Auth() {
     );
     if (account) {
       setPopupMessage("Sign in successful!");
+      localStorage.setItem('accountInfo', JSON.stringify({ name: account.name, email: account.email }));
+      setShouldNavigate(true);
     } else {
       setPopupMessage("Account not found. Please sign up.");
       setIsSignUp(!isSignUp);
@@ -115,11 +129,18 @@ function Auth() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
-                  <button type="submit">Sign In</button>
+                  <div className="reset-password">
+                    <button
+                      type="button"
+                      onClick={() => setIsForgotPassword(true)}
+                    >
+                      Forgot Password?
+                    </button>
+                  </div>
+                  <button className="button" type="submit">
+                    Sign In
+                  </button>
                 </form>
-                <button onClick={() => setIsForgotPassword(true)}>
-                  Forgot Password?
-                </button>
               </div>
             ) : (
               <div className="forgot-password">
@@ -169,7 +190,9 @@ function Auth() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                <button type="submit">Sign Up</button>
+                <button className="button" type="submit">
+                  Sign Up
+                </button>
               </form>
             </div>
           </div>

@@ -1,0 +1,10 @@
+.home-container {
+  display: flex;
+  height: 100vh;
+}
+
+.content-container {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
