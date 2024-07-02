@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Nav from "./Components/Nav/Nav";
 import Dashboard from "./Components/Dashboard/Dashboard";
-import Account from "./Components/Account/Account";
+import Profile from "./Components/Profile/Profile";
+import Settings from "../Settings/Settings";
 import "./Home.css";
 function Home() {
 
@@ -28,8 +29,9 @@ function Home() {
       <main className="content-container">
         <Routes>
           <Route path="dashboard" element={<Dashboard account={account} />} />
-          <Route path="account" element={<Account account={account} />} />
+          <Route path="profile" element={<Profile account={account} />} />
           <Route path="/" element={<Dashboard account={account} />} />
+          <Route path="Settings/*" element={<Settings account={account} />} />
         </Routes>
       </main>
     </div>

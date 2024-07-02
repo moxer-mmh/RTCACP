@@ -13,7 +13,8 @@ function Nav() {
     <nav className="nav">
       <ul>
         <li><Link to="/home/dashboard">Dashboard</Link></li>
-        <li><Link to="/home/account">Account</Link></li>
+        <li><Link to="/home/profile">Profile</Link></li>
+        <li><Link to="/home/settings">Settings</Link></li>
       </ul>
       <button onClick={handleLogout}>Logout</button>
     </nav>

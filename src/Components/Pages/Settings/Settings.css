@@ -1,0 +1,12 @@
+.settings {
+  display: flex;
+  height: 100vh;
+  margin:0;
+  padding: 0;
+}
+
+.settings-container {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
