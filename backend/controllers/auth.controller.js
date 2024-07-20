@@ -1,5 +1,6 @@
 import bcrypt from "bcryptjs";
 import User from "../models/user.model.js";
+import generateTokenAndCookie from "../utils/generateToken.js";
 
 export const signup = async (req, res) => {
   try {
@@ -50,6 +51,7 @@ export const signup = async (req, res) => {
     });
 
     if (newUser) {
+      await generateTokenAndCookie(newUser._id, res);
       await newUser.save();
 
       console.log(`User created: ${newUser._id}, ${newUser.userName}`);
@@ -75,12 +77,12 @@ export const signup = async (req, res) => {
   }
 };
 
-export const signin = (req, res) => {
-  console.log("Signin route");
-  res.send("Signin route");
+export const login = (req, res) => {
+  console.log("login route");
+  res.send("login route");
 };
 
-export const signout = (req, res) => {
-  console.log("Signout route");
-  res.send("Signout route");
+export const logout = (req, res) => {
+  console.log("logout route");
+  res.send("logout route");
 };
