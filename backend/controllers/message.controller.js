@@ -35,3 +35,23 @@ export const sendMessage = async (req, res) => {
     res.status(500).json({ error: "Something went wrong." });
   }
 };
+
+export const getMessages = async (req, res) => {
+  try {
+    const { id: userTochatId } = req.params;
+    const senderId = req.user._id;
+
+    const conversation = await Conversation.findOne({
+      participants: { $all: [senderId, userTochatId] },
+    }).populate("messages");
+
+    if (!conversation) return res.status(200).json([]);
+
+    const messages = conversation.messages;
+
+    res.status(200).json(messages);
+  } catch (error) {
+    console.error("Error on getMessages", error.message);
+    res.status(500).json({ error: "Something went wrong." });
+  }
+};
