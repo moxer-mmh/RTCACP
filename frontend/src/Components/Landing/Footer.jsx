@@ -1,7 +1,6 @@
 import React from "react";
 import {
   BsDiscord,
-  BsDribbble,
   BsFacebook,
   BsGithub,
   BsInstagram,
