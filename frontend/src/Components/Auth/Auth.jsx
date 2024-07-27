@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Auth.css";
-import api from "../../../api/accounts";
-import Arrow from "../../../assets/arrow-left-solid.svg";
-import useAxiosFetch from "../../../Hooks/useAxiosFetch";
+import api from "../../utils/api/accounts";
+import Arrow from "../../assets/arrow-left-solid.svg";
+import useAxiosFetch from "../../Hooks/useAxiosFetch";
 import PropTypes from "prop-types";
 
 const Popup = ({ message, onClose }) => {
@@ -52,9 +52,9 @@ function Auth() {
 
   useEffect(() => {
     if (shouldNavigate) {
-      const accountInfo = localStorage.getItem('accountInfo');
+      const accountInfo = localStorage.getItem("accountInfo");
       if (accountInfo) {
-        navigate('/home');
+        navigate("/home");
       }
     }
   }, [shouldNavigate, navigate]);
@@ -66,7 +66,10 @@ function Auth() {
     );
     if (account) {
       setPopupMessage("Sign in successful!");
-      localStorage.setItem('accountInfo', JSON.stringify({ name: account.name, email: account.email }));
+      localStorage.setItem(
+        "accountInfo",
+        JSON.stringify({ name: account.name, email: account.email })
+      );
       setShouldNavigate(true);
     } else {
       setPopupMessage("Account not found. Please sign up.");

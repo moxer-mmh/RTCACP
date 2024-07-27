@@ -1,5 +1,5 @@
 import "./HomeButton.css";
-import Arrow from "../../assets/arrow-up-solid.svg";
+import Arrow from "../../../assets/arrow-up-solid.svg";
 
 function HomeButton() {
   return (

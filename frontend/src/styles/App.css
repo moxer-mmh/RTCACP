@@ -1,0 +1,7 @@
+header {
+  z-index: 10001 !important;
+}
+
+.btn-primary {
+  @apply font-semibold px-7 py-2 bg-[#333333] text-[#f5f5f5] rounded hover:bg-[#c2c2c2] hover:text-[#483535] transition-all duration-300;
+}

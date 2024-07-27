@@ -1,25 +1,19 @@
-import Nav from "./Components/Nav/Nav";
-import Footer from "./Components/Footer/Footer";
-import Body from "./Components/Body/Body";
-import Auth from "./Components/Pages/Auth/Auth";
-import Home from "./Components/Pages/Home/Home";
-import "./App.css";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
+
+import LandingPage from "./Pages/LandingPage";
+import AuthPage from "./Pages/AuthPage";
+import AppPage from "./Pages/AppPage";
+
+import "./styles/App.css";
 
 function App() {
   return (
     <>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <Nav /> <Body /> <Footer />
-            </>
-          }
-        />
-        <Route path="/auth" element={<Auth />} />
-        <Route path="/home/*" element={<Home />} />
+        <Route path="/*" element={<LandingPage />} />
+        <Route path="/auth" element={<AuthPage />} />
+        <Route path="/home/*" element={<AppPage />} />
       </Routes>
     </>
   );

@@ -3,7 +3,7 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import Nav from "./Components/Nav/Nav";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import Profile from "./Components/Profile/Profile";
-import Settings from "../Settings/Settings";
+import Settings from "./Settings/Settings";
 import "./Home.css";
 function Home() {
 
