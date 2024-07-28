@@ -1,216 +1,75 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import "./Auth.css";
-import api from "../../utils/api/accounts";
-import Arrow from "../../assets/arrow-left-solid.svg";
-import useAxiosFetch from "../../Hooks/useAxiosFetch";
-import PropTypes from "prop-types";
+import React, { useState } from "react";
+import { FaArrowLeft } from "react-icons/fa6";
 
-const Popup = ({ message, onClose }) => {
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      e.preventDefault();
-      onClose();
-    };
+import Login from "./Login";
+import SignUp from "./SignUp";
 
-    document.addEventListener("keydown", handleKeyDown);
+const Auth = () => {
+  const [isLogin, setIsLogin] = useState(true);
 
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [onClose]);
+  const toggleForm = () => {
+    setIsLogin(!isLogin);
+  };
 
   return (
-    <div className="popup">
-      <div className="popup-content">
-        <p>{message}</p>
-        <button onClick={onClose}>Close</button>
+    <div className="flex items-center justify-center min-h-screen bg-[#ccc]">
+      <div className="flex flex-col md:flex-row w-full h-screen md:h-[600px] max-w-4xl bg-[#f5f5f5] relative lg:rounded-lg shadow-lg overflow-hidden">
+        {/* Login Form */}
+        <div
+          className={`flex items-center justify-center w-full h-1/2 md:w-1/2 md:h-full p-6 bg-[#f5f5f5] absolute transition-all duration-500 ease-in-out ${
+            isLogin ? "left-0 top-0" : "-top-1/2 md:top-0 md:-left-1/2"
+          }`}
+        >
+          <Login toggleForm={toggleForm} />
+        </div>
+
+        {/* Toggle Button */}
+        <div
+          className={`flex items-center justify-center w-full h-1/2 md:w-1/2 md:h-full p-6 bg-[#333333] absolute transition-all duration-500 ease-in-out ${
+            isLogin
+              ? "left-0 top-1/2 md:top-0 md:left-1/2"
+              : "left-0 top-0 md:top-0 md:-left-0"
+          }`}
+        >
+          <div className="text-center">
+            <h2 className="text-2xl font-semibold mb-6 text-[#f5f5f5] duration-1000">
+              {isLogin ? "Dont have an account ?" : "Already Have an Account?"}
+            </h2>
+            <button
+              onClick={toggleForm}
+              className="bg-[#f5f5f5] text-[#333333] font-bold py-2 px-4 rounded hover:bg-[#444444] hover:text-[#f5f5f5] focus:outline-none focus:shadow-outline"
+            >
+              {isLogin ? "Sign Up" : "Sign In"}
+            </button>
+          </div>
+        </div>
+
+        {/* Sign Up Form */}
+        <div
+          className={`flex items-center justify-center w-full h-1/2 md:w-1/2 md:h-full p-6 bg-[#f5f5f5] absolute transition-all duration-500 ease-in-out ${
+            isLogin
+              ? "left-0 top-full md:top-0 md:left-full"
+              : "left-0 top-1/2 md:top-0 md:left-1/2"
+          }`}
+        >
+          <SignUp toggleForm={toggleForm} />
+        </div>
       </div>
+      <a href="/">
+        <div
+          className={`fixed bottom-7 right-7 p-4 w-12 h-12 ${
+            isLogin ? "md:bg-[#333333] bg-[#f5f5f5] " : "bg-[#333333]"
+          }  rounded-full`}
+        >
+          <FaArrowLeft
+            className={`bg-none ${
+              isLogin ? "md:text-[#f5f5f5] text-[#333333]" : "text-[#f5f5f5]"
+            }`}
+          />
+        </div>
+      </a>
     </div>
   );
 };
-
-Popup.propTypes = {
-  message: PropTypes.string.isRequired,
-  onClose: PropTypes.func.isRequired,
-};
-
-function Auth() {
-  const [isSignUp, setIsSignUp] = useState(false);
-  const [isForgotPassword, setIsForgotPassword] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [popupMessage, setPopupMessage] = useState("");
-  const [shouldNavigate, setShouldNavigate] = useState(false);
-  const navigate = useNavigate();
-  const {
-    data: accounts,
-    fetchError,
-    isLoading,
-  } = useAxiosFetch(`${api.defaults.baseURL}/accounts`);
-
-  useEffect(() => {
-    if (shouldNavigate) {
-      const accountInfo = localStorage.getItem("accountInfo");
-      if (accountInfo) {
-        navigate("/home");
-      }
-    }
-  }, [shouldNavigate, navigate]);
-
-  function handleSubmitSignIn(e) {
-    e.preventDefault();
-    const account = accounts.find(
-      (account) => account.email === email && account.password === password
-    );
-    if (account) {
-      setPopupMessage("Sign in successful!");
-      localStorage.setItem(
-        "accountInfo",
-        JSON.stringify({ name: account.name, email: account.email })
-      );
-      setShouldNavigate(true);
-    } else {
-      setPopupMessage("Account not found. Please sign up.");
-      setIsSignUp(!isSignUp);
-    }
-    setEmail("");
-    setPassword("");
-  }
-
-  function handleSubmitSignUp(e) {
-    e.preventDefault();
-    const account = accounts.find((account) => account.email === email);
-    if (account) {
-      setPopupMessage("Account already exists");
-      setIsSignUp(!isSignUp);
-    } else {
-      api
-        .post("/accounts", { name, email, password })
-        .then(() => {
-          setPopupMessage("Account created successfully");
-          setIsSignUp(!isSignUp);
-        })
-        .catch((error) => {
-          console.error(error);
-          setPopupMessage("Error creating account");
-        });
-    }
-    setName("");
-    setEmail("");
-    setPassword("");
-  }
-
-  function handleForgotPassword(e) {
-    e.preventDefault();
-    //password reset logic here
-    setPopupMessage("Password reset link sent to your email");
-    setIsForgotPassword(false);
-  }
-
-  return (
-    <main className="auth">
-      {isLoading && <p>Loading...</p>}
-      {!isLoading && fetchError && <p style={{ color: "red" }}>{fetchError}</p>}
-      {!isLoading && !fetchError && (
-        <div className={`auth-container ${isSignUp ? "signing-up" : ""}`}>
-          <div className="container signin-container">
-            {!isForgotPassword ? (
-              <div className="signin">
-                <h1>Sign In</h1>
-                <form onSubmit={handleSubmitSignIn}>
-                  <input
-                    type="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                  <input
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                  <div className="reset-password">
-                    <button
-                      type="button"
-                      onClick={() => setIsForgotPassword(true)}
-                    >
-                      Forgot Password?
-                    </button>
-                  </div>
-                  <button className="button" type="submit">
-                    Sign In
-                  </button>
-                </form>
-              </div>
-            ) : (
-              <div className="forgot-password">
-                <h1>Forgot Password</h1>
-                <form onSubmit={handleForgotPassword}>
-                  <input
-                    type="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                  <button type="submit">Reset Password</button>
-                </form>
-                <button onClick={() => setIsForgotPassword(false)}>
-                  Back to Sign In
-                </button>
-              </div>
-            )}
-            <div className="signup-msg">
-              <p>Dont have an account?</p>
-              <button onClick={() => setIsSignUp(true)}>Sign Up</button>
-            </div>
-          </div>
-          <div className="container signup-container">
-            <div className="signin-msg">
-              <p>Already have an account?</p>
-              <button onClick={() => setIsSignUp(false)}>Sign In</button>
-            </div>
-            <div className="signup">
-              <h1>Sign Up</h1>
-              <form onSubmit={handleSubmitSignUp}>
-                <input
-                  type="text"
-                  placeholder="Name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
-                <input
-                  type="email"
-                  placeholder="Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <input
-                  type="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                <button className="button" type="submit">
-                  Sign Up
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      )}
-      <div className="iconbutton">
-        <a href="/">
-          <img src={Arrow} alt="home" />
-        </a>
-      </div>
-      {popupMessage && (
-        <Popup message={popupMessage} onClose={() => setPopupMessage("")} />
-      )}
-    </main>
-  );
-}
 
 export default Auth;
