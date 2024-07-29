@@ -16,15 +16,14 @@ function Home() {
             </div>
             <div className="md:w-1/2">
               <h1 className="text-5xl font-bold mb-4 text-[#333333] md:w-3/4 leading-snug">
-                Bridging teams {" "}
-                <span className="text-[#0F446E] leading-snug">
-                together
-                </span>
+                Bridging teams{" "}
+                <span className="text-[#0F446E] leading-snug">together</span>
               </h1>
               <p className="text-[#333333] text-base mb-8">
-                Stay connected and collaborate in real-time with our all-in-one platform.
+                Stay connected and collaborate in real-time with our all-in-one
+                platform.
               </p>
-              <button className="btn-primary">
+              <button className="btn-landing-p">
                 <Switch to="/auth">Get Started</Switch>
               </button>
             </div>
@@ -41,8 +40,8 @@ function Home() {
               <p className="text-[#333333] text-base mb-8">
                 Mobile and desktop, stay productive everywhere.
               </p>
-              <button className="btn-primary mr-1">Mobile</button>
-              <button className="btn-primary">Desktop</button>
+              <button className="btn-landing-p mr-1">Mobile</button>
+              <button className="btn-landing-p">Desktop</button>
             </div>
           </div>
         </Carousel>

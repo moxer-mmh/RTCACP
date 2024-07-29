@@ -47,9 +47,9 @@ function Login({ toggleForm }) {
         <div className="flex items-center justify-center mt-5 pt-5">
           <button
             className="bg-[#333333] hover:bg-[#c2c2c2] text-[#f5f5f5] hover:text-[#333333] font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            type="button"
+            type="submit"
           >
-            Sign In
+            <a href="/app">Login</a>
           </button>
         </div>
       </form>

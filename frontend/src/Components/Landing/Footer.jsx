@@ -12,7 +12,7 @@ import logo from "../../assets/RTCACP-Logo.svg";
 
 function Footer() {
   return (
-    <MyFooter container className="bg-[#f5f5f5]">
+    <MyFooter container className="bg-[#f5f5f5] rounded-none">
       <div className="w-full ">
         <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
           <div>

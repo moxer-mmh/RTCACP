@@ -13,8 +13,7 @@ const Auth = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-[#ccc]">
-      <div className="flex flex-col md:flex-row w-full h-screen md:h-[600px] max-w-4xl bg-[#f5f5f5] relative lg:rounded-lg shadow-lg overflow-hidden">
-        {/* Login Form */}
+      <div className="flex flex-col md:flex-row w-full h-screen md:h-[600px] max-w-6xl bg-[#f5f5f5] relative lg:rounded-lg shadow-lg overflow-hidden">
         <div
           className={`flex items-center justify-center w-full h-1/2 md:w-1/2 md:h-full p-6 bg-[#f5f5f5] absolute transition-all duration-500 ease-in-out ${
             isLogin ? "left-0 top-0" : "-top-1/2 md:top-0 md:-left-1/2"
@@ -23,7 +22,6 @@ const Auth = () => {
           <Login toggleForm={toggleForm} />
         </div>
 
-        {/* Toggle Button */}
         <div
           className={`flex items-center justify-center w-full h-1/2 md:w-1/2 md:h-full p-6 bg-[#333333] absolute transition-all duration-500 ease-in-out ${
             isLogin
@@ -39,12 +37,11 @@ const Auth = () => {
               onClick={toggleForm}
               className="bg-[#f5f5f5] text-[#333333] font-bold py-2 px-4 rounded hover:bg-[#444444] hover:text-[#f5f5f5] focus:outline-none focus:shadow-outline"
             >
-              {isLogin ? "Sign Up" : "Sign In"}
+              {isLogin ? "Sign Up" : "Login"}
             </button>
           </div>
         </div>
 
-        {/* Sign Up Form */}
         <div
           className={`flex items-center justify-center w-full h-1/2 md:w-1/2 md:h-full p-6 bg-[#f5f5f5] absolute transition-all duration-500 ease-in-out ${
             isLogin

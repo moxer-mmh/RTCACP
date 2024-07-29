@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route path="/*" element={<LandingPage />} />
         <Route path="/auth" element={<AuthPage />} />
-        <Route path="/home/*" element={<AppPage />} />
+        <Route path="/app/*" element={<AppPage />} />
       </Routes>
     </>
   );
