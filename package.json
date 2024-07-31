@@ -2,7 +2,7 @@
   "name": "rtcacp",
   "version": "1.0.0",
   "description": "Real-Time Communication and Collaboration Platform",
-  "main": "server.js",
+  "main": "backend/server.js",
   "scripts": {
     "server": "nodemon backend/server.js",
     "start": "node backend/server.js",
