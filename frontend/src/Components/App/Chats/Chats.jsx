@@ -3,7 +3,7 @@ import Sidebar from "./Sidebar";
 import MessageContainer from "./Messages/MessageContainer";
 import useConversation from "../../../zustand/useConversation";
 
-function Conversations() {
+function Chats() {
   const { selectedConversation, setSelectedConversation } = useConversation();
 
   const handleReturnToSidebar = () => {
@@ -34,4 +34,4 @@ function Conversations() {
   );
 }
 
-export default Conversations;
+export default Chats;

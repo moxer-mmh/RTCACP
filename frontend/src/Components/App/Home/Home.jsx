@@ -25,7 +25,7 @@ function Home() {
             </Link>
           </div>
           <div className="mb-9">
-            <Link to="/app/conversations">
+            <Link to="/app/chats">
               <BiConversation className="text-[#333333]" size={30} />
             </Link>
           </div>
