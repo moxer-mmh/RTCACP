@@ -1,13 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { FaArrowLeft } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import Conversation from "./Conversation";
+import useGetConversations from "../../../Hooks/useGetConversations";
+import useConversation from "../../../zustand/useConversation";
+import toast from "react-hot-toast";
 
-// eslint-disable-next-line react/prop-types
-function Sidebar({ onConversationSelect }) {
-  const handleConversationClick = (conversation) => {
-    onConversationSelect(conversation);
+function Sidebar() {
+  const { loading, conversations } = useGetConversations();
+  const [search, setSearch] = useState("");
+  const { setSelectedConversation } = useConversation();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!search) return;
+    const conversation = conversations.find((c) =>
+      c.userName.toLowerCase().includes(search.toLowerCase())
+    );
+    if (conversation) {
+      setSelectedConversation(conversation);
+      setSearch("");
+    } else {
+      toast.error("No user found with that username");
+    }
   };
 
   return (
@@ -23,12 +39,17 @@ function Sidebar({ onConversationSelect }) {
           <h2 className="text-[#333333] font-bold text-lg lg:text-xl">Chats</h2>
         </div>
       </div>
-      <form className="flex items-center justify-center gap-2 w-full mb-4 lg:mb-6">
+      <form
+        className="flex items-center justify-center gap-2 w-full mb-4 lg:mb-6"
+        onSubmit={handleSubmit}
+      >
         <div className="relative flex-grow">
           <input
             type="text"
             placeholder="Search..."
             className="w-full py-2 pl-4 pr-10 rounded-full bg-[#f5f5f5] text-[#333333] border border-[#333333] focus:outline-none focus:ring-2 focus:ring-[#c2c2c2] focus:border-transparent"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
           />
           <button
             type="submit"
@@ -40,12 +61,14 @@ function Sidebar({ onConversationSelect }) {
       </form>
       <div className="w-full border-t border-[#333333] mb-4 lg:mb-6" />
       <div className="flex-1 overflow-y-auto custom-scrollbar">
-        {[...Array(20)].map((_, index) => (
+        {conversations.map((conversation, idx) => (
           <Conversation
-            key={index}
-            onClick={() => handleConversationClick({ username: `User ${index + 1}` })}
+            key={conversation._id}
+            conversation={conversation}
+            lastIdx={idx === conversations.length - 1}
           />
         ))}
+        {loading && <span className="loading loading-spinner mx-auto"></span>}
       </div>
     </div>
   );

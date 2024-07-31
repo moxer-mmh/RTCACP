@@ -1,13 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import Sidebar from "./Sidebar";
 import MessageContainer from "./Messages/MessageContainer";
+import useConversation from "../../../zustand/useConversation";
 
 function Conversations() {
-  const [selectedConversation, setSelectedConversation] = useState(null);
-
-  const handleConversationSelect = (conversation) => {
-    setSelectedConversation(conversation);
-  };
+  const { selectedConversation, setSelectedConversation } = useConversation();
 
   const handleReturnToSidebar = () => {
     setSelectedConversation(null);
@@ -20,7 +17,7 @@ function Conversations() {
           selectedConversation ? "hidden" : "flex"
         } md:flex w-full md:w-1/5 h-full`}
       >
-        <Sidebar onConversationSelect={handleConversationSelect} />
+        <Sidebar />
       </div>
 
       <div

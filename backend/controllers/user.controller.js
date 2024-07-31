@@ -9,10 +9,8 @@ export const getUsersForSideBar = async (req, res) => {
     }).select("-password");
 
     res.status(200).json(filteredUsers);
-
-    res.status(200).json(users);
   } catch (error) {
-    console.error("Error on getUsersForSideBar", error.message);
-    res.status(500).json({ error: "Something went wrong." });
+    console.error("Error in getUsersForSideBar:", error.message);
+    res.status(500).json({ error: "Internal server error" });
   }
 };
