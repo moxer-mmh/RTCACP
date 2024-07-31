@@ -28,6 +28,7 @@
     "react-icons": "^5.2.1",
     "react-router-dom": "^6.23.1",
     "react-scroll": "^1.9.0",
+    "rtcacp": "file:..",
     "socket.io-client": "^4.7.5",
     "TagCloud": "^2.5.0",
     "web-vitals": "^4.1.1",
