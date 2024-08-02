@@ -35,7 +35,9 @@ You can test the official main version of the project from this website [RTCACP.
    npm install
    cd /frontend
    npm install
+   cp .env.example .env
    ```
+update the .env file
 
 ### Running the Application
 
