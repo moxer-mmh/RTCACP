@@ -4,7 +4,6 @@ import { FaArrowLeft } from "react-icons/fa";
 import { FiSend } from "react-icons/fi";
 import { BiConversation } from "react-icons/bi";
 import useConversation from "../../../../zustand/useConversation";
-import { set } from "mongoose";
 import useSendMessage from "../../../../Hooks/useSendMessage";
 
 function MessageContainer({ onReturnToSidebar }) {
